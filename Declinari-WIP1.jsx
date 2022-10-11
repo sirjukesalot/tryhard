@@ -11,8 +11,7 @@ var s = aprj.selection;
     var w = 1080;
     var hSqr = 1080;
     var hVert = 1920;
-    var x = 56.5;
-    var scl = [x,x]
+    var x = 2;
 
 var fDeclin = aprj.items.addFolder('Declinari');        //declin folders
 var foldSqr = aprj.items.addFolder('1x1');
@@ -34,37 +33,34 @@ for (var i = 0; i < s.length; i++) {
 
 (function() {
 
-    // Find Main render folder
-
-    var mRenderF = findItemByName('Main render');
-    if (!mRenderF) {
-        return;
-    }
-
-
-    
-  
-
-    
-    // Find compositions
+    // Find composition
 
     var comps1x1 = findItemByName(s[i].name + '-1x1');
+
     if (!comps1x1) {
         return;
     }
 
     var comps9x16 = findItemByName(s[i].name + '-9x16');
+
     if (!comps9x16) {
         return;
     }
 
     // Find image
 
-   
+    var image = findItemByName(s[i].name);
+
+    if (!image) {
+        return;
+
+    }
+
 
     // Add image to composition
 
-    
+    comps1x1.layers.add(image).scale.setValue([50,50]);
+    comps9x16.layers.add(image).scale.setValue([50,50]);
 
     function findItemByName(itemName) {
 
@@ -83,7 +79,7 @@ for (var i = 0; i < s.length; i++) {
         return alert("Could not find " + itemName);
 
     }
-fDeclin.parentFolder = mRenderF;
+
 })();
 
 
