@@ -35,6 +35,13 @@ for (var i = 0; i < s.length; i++) {
 
     // Find composition
 
+var renderFolder = findItemByName('Main render');
+
+    if (!renderFolder) {
+        return;
+    }
+
+
     var comps1x1 = findItemByName(s[i].name + '-1x1');
 
     if (!comps1x1) {
@@ -61,7 +68,7 @@ for (var i = 0; i < s.length; i++) {
 
     comps1x1.layers.add(image).scale.setValue([50,50]);
     comps9x16.layers.add(image).scale.setValue([50,50]);
-
+    fDeclin.parentFolder = renderFolder;
     function findItemByName(itemName) {
 
         for (var i = 1, il = app.project.numItems; i <= il; i++) {
